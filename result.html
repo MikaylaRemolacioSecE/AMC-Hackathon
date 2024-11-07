@@ -15,25 +15,92 @@
         
         <div class="main-content">
             <!-- Left Section: Display Input Results -->
-            <div class="left">
+            <div class="results-main">
                 <h2>Selected Materials</h2>
                 <p id="selectedMaterials"></p> <br>
                 
                 <h2>Recommended Paint Formula</h2>
                 <p id="recommendedFormula"></p>
+                <p>
+                    <strong>Resins</strong> - Hydroxylated Acrilic <br>
+                    <strong>Solvent</strong> - Ethyl Acetate and Xylene <br>
+                    <strong>Thickener</strong> - Tixogel<br>
+                    <strong>Dispersent</strong> - Additive BYK 108<br>
+                    <strong>Pigment</strong> - TiO2 <br>
+                </p>
             </div>
             
             <!-- Right Section: Donut Chart for Components -->
-            <div class="right">
+            <div class="chart">
                 <h2>Paint Components Breakdown</h2>
                 <canvas id="paintComponentsChart" width="200" height="200"></canvas>
             </div>
         </div>
-        
-        <!-- Below: History of Testing and Success Rates -->
-        <div class="history">
+
+        <!-- History of Testing and Success Rates -->
+        <div class="history" id="testingHistory">
             <h2>History of Testing and Success Rates</h2>
-            <div id="testingHistory"></div>
+            <p>
+                <strong>Company Usage:</strong><br>
+                    <li>John Deere</li>
+                    <li>CAT</li>
+
+            </p>
+        </div>
+
+        <!-- Standards Section -->
+        <div class="standards">
+            <h2>Standards Testing</h2>
+            <ul>
+                <li> Corrosion Resistance
+                    <ul>
+                        <li>ASTM B117 (Salt Spray Test)<span>✅</span>
+                        </li>
+                        <li>ASTM D610 (Rust Resistance)<span>✅</span>
+                        </li>
+                    </ul>
+                </li><br>
+                <li> UV Resistance and Weathering
+                    <ul>
+                        <li>ASTM D4587 & ASTM G154 (Weathering and Lighting Conditions)<span>✅</span>
+                        </li>
+                    </ul>
+                </li><br>
+                <li> Chemical and Abrasion Resistance
+                    <ul>
+                        <li>ASTM D4060 (Taber Abrasion Test)<span>✅</span>
+                        </li>
+                        <li>ASTM D5402 (Solvent Resistance)<span>✅</span>
+                        </li>
+                    </ul>
+                </li><br>
+                <li> Environmental and VOC
+                    <ul>
+                        <li>EPA Regulations and REACH Compliance (Eco-Friendly Compounds)<span>✅</span>
+                        </li>
+                    </ul>
+                </li><br>
+                <li> Application and Adhesion
+                    <ul>
+                        <li>ASTM D3359 (Cross Hatch Adhesion Test)<span>✅</span>
+                        </li>
+                    </ul>
+                </li><br>
+                <li> Safety and Durability
+                    <ul>
+                        <li>ANSI and OSHA Guidelines (Safety Standards)<span>✅</span>
+                        </li>
+                        <li>ASTM D523 (Gloss Measurement)<span>✅</span>
+                        </li>
+                    </ul>
+                </li><br>
+                <li> Color Consistency and Quality Control
+                    <ul>
+                        <li>ASTM D2244 (Paint Job Quality)<span>✅</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -154,15 +221,6 @@
                 }
             }
         });
-
-        // Display History of Testing (static example)
-        const testingHistory = `
-            <strong>Testing History by Company:</strong><br>
-            John Deere 2020: 92% Success Rate <br>
-            CAT 2018: 83% Success Rate <br>
-            VGC 2016: 94% Success Rate
-        `;
-        document.getElementById('testingHistory').innerHTML = testingHistory;
     </script>
 </body>
 </html>
