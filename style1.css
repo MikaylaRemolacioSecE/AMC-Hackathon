@@ -1,0 +1,115 @@
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9f7f1; /* Light green background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align items at the top */
+    height: 100vh; /* Ensure the body takes up the full height of the viewport */
+    flex-direction: column; /* Allow elements to stack vertically */
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 28px;
+    color: #2c6e49; /* Dark green for the title */
+    margin-top: 3em;
+    text-align: center; /* Center the heading text */
+    width: 100%;
+    font-size: 50px;
+}
+
+/* Form Styles */
+form {
+    background-color: #ffffff; /* White form background */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 550px; /* Fixed width */
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* Center form items horizontally */
+}
+
+/* Label Styles */
+label {
+    font-size: 18px;
+    color: #2c6e49; /* Dark green for labels */
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: left; /* Align the text to the left */
+}
+
+/* Select Dropdown Styles */
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #a2d5ab; /* Light green border */
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f1fdf3; /* Very light green */
+    transition: all 0.3s ease;
+}
+
+/* Select Hover Effect */
+select:hover {
+    border-color: #63b47e; /* Medium green on hover */
+}
+
+/* Button Styles */
+button {
+    background-color: #4caf50; /* Green button */
+    color: white;
+    font-size: 18px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Button spans the full width */
+    margin-top: 10px;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+
+/* Button Focus Effect */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Green focus outline */
+}
+
+/* Error Message Styles */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center; /* Center error messages */
+    width: 100%;
+}
+
+select[multiple] {
+    height: auto; /* Adjusts height to fit multiple options */
+    min-height: 120px; /* Sets a minimum height */
+    padding: 10px;
+    border: 2px solid #a2d5ab;
+    border-radius: 8px;
+    background-color: #f1fdf3;
+}
+
+.checkboxes{
+    border: 2px solid #a2d5ab; /* Light green border */
+    background-color: #f1fdf3; /* Very light green */
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.checkboxes div{
+    padding-bottom: 5px;
+}

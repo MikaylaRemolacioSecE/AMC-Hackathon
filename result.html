@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Selection Result</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+    <div class="result-container">
+        <!-- Title in the top middle -->
+        <h1 class="result-title">Suggested Paint Formula</h1>
+        
+        <div class="main-content">
+            <!-- Left Section: Display Input Results -->
+            <div class="left">
+                <h2>Selected Materials</h2>
+                <p id="selectedMaterials"></p> <br>
+                
+                <h2>Recommended Paint Formula</h2>
+                <p id="recommendedFormula"></p>
+            </div>
+            
+            <!-- Right Section: Donut Chart for Components -->
+            <div class="right">
+                <h2>Paint Components Breakdown</h2>
+                <canvas id="paintComponentsChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+        
+        <!-- Below: History of Testing and Success Rates -->
+        <div class="history">
+            <h2>History of Testing and Success Rates</h2>
+            <div id="testingHistory"></div>
+        </div>
+    </div>
+
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Retrieve selected values from URL and display them
+        const material1 = getQueryParam('material1');
+        const material2 = getQueryParam('material2');
+        const material3 = getQueryParam('material3') ? getQueryParam('material3').split(',') : [];  // Split field applications by comma
+        const material4 = getQueryParam('material4');
+        const material5 = getQueryParam('material5');
+
+        // Display selected materials
+        const selectedMaterials = `
+            <strong>Surface Material:</strong> ${material1} <br>
+            <strong>Paint Colour:</strong> ${material2} <br>
+            <strong>Field Application:</strong> ${material3.join(', ')} <br>
+            <strong>Past Handling:</strong> ${material4} <br>
+            <strong>Location of Use:</strong> ${material5}
+        `;
+        document.getElementById('selectedMaterials').innerHTML = selectedMaterials;
+
+        // Determine recommended formula based on selected options
+        let recommendedFormula = "";
+        
+        if (material3.includes("Outdoor") && material3.includes("Industrial")) {
+            recommendedFormula = "Epoxy primer with a Polyurethane topcoat for enhanced UV, abrasion, and chemical resistance.";
+        } else if (material3.includes("Indoor") || material3.includes("Non-Industrial")) {
+            recommendedFormula = "Alkyd Enamel for moderate durability suitable for indoor and non-industrial settings.";
+        }
+        
+        if (material5 === "Coastal") {
+            recommendedFormula = "Zinc-rich epoxy primer with Polyurethane topcoat for superior corrosion protection in coastal environments.";
+        }
+
+        document.getElementById('recommendedFormula').innerHTML = recommendedFormula;
+
+        // Function to generate random percentages that sum up to 100 with each component > 10%
+        function generateRandomPercentages() {
+            let percentages = [];
+            let total = 100;
+    
+            // Generate random percentages for 4 components with a minimum of 10% each
+            for (let i = 0; i < 3; i++) {
+                let random = Math.floor(Math.random() * (total - 30)) + 10;  // Random value between 10 and (total - 30)
+                percentages.push(random);
+                total -= random;
+            }
+            percentages.push(total); // The last component takes the remaining percentage
+            return percentages;
+        }
+    
+        // Generate random percentages for the paint components
+        const randomPercentages = generateRandomPercentages();
+    
+        // Chart for paint components breakdown with randomized percentages
+        const ctx = document.getElementById('paintComponentsChart').getContext('2d');
+        const paintComponentsChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Pigments', 'Binders', 'Solvents', 'Additives'],
+                datasets: [{
+                    label: 'Paint Components',
+                    data: randomPercentages, // Use randomized percentages
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                const label = tooltipItem.label || '';
+                                const value = tooltipItem.raw;
+                                return `${label}: ${value}%`;
+                            }
+                        }
+                    },
+                    datalabels: {
+                        display: true,
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: function(value, context) {
+                            return `${context.chart.data.labels[context.dataIndex]}: ${value}%`; // Display label and value
+                        },
+                        // Enable leader lines for each label
+                        anchor: 'end',  // Position the label at the outer end of each section
+                        align: 'start', // Align the label with the line
+                        offset: 15,  // Offset the label to make space for the leader line
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Optional: background color for the text
+                        borderRadius: 3,
+                        padding: 5
+                    }
+                },
+                // Enable the leader lines by customizing the line element
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        });
+
+        // Display History of Testing (static example)
+        const testingHistory = `
+            <strong>Testing History by Company:</strong><br>
+            John Deere 2020: 92% Success Rate <br>
+            CAT 2018: 83% Success Rate <br>
+            VGC 2016: 94% Success Rate
+        `;
+        document.getElementById('testingHistory').innerHTML = testingHistory;
+    </script>
+</body>
+</html>

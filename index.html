@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Selection Form</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <form id="materialForm">
+        <h1>Client Request Form</h1>
+        <label for="material1">Select Surface Material:</label>
+        <select id="material1" name="material1">
+            <option value="">--Choose--</option>
+            <option value="Steel">Galvanized Steel</option>
+            <option value="Aluminium">Aluminium</option>
+            <option value="Plastic">Plastic</option>
+            <option value="Stainless Steel">Stainless Steel</option>
+        </select>
+
+        <label for="material2">Select Paint Colour:</label>
+        <select id="material2" name="material2">
+            <option value="">--Choose--</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Yellow">Yellow</option>
+        </select>
+
+        <label>Select Field Application (Select Applicable):</label>
+        <div class="checkboxes">
+        <div>
+            <input type="checkbox" id="indoor" name="material3" value="Indoor">
+            <label for="indoor">Indoor</label>
+        </div>
+        <div>
+            <input type="checkbox" id="outdoor" name="material3" value="Outdoor">
+            <label for="outdoor">Outdoor</label>
+        </div>
+        <div>
+            <input type="checkbox" id="dry" name="material3" value="Dry">
+            <label for="dry">Dry Area</label>
+        </div>
+        <div>
+            <input type="checkbox" id="wet" name="material3" value="Wet">
+            <label for="wet">Wet Area</label>
+        </div>
+        <div>
+            <input type="checkbox" id="industrial" name="material3" value="Industrial">
+            <label for="industrial">Industrial</label>
+        </div>
+        <div>
+            <input type="checkbox" id="nonIndustrial" name="material3" value="Non-Industrial">
+            <label for="nonIndustrial">Non-Industrial</label>
+        </div>
+        </div> <br>
+
+        <label for="material4">Select Past Handling:</label>
+        <select id="material4" name="material4">
+            <option value="">--Choose--</option>
+            <option value="Handled Well">Handled Well</option>
+            <option value="Poor Handling">Poor Handling</option>
+        </select>
+
+        <label for="material5">Select Location of Use:</label>
+        <select id="material5" name="material5">
+            <option value="">--Choose--</option>
+            <option value="Urban">Urban</option>
+            <option value="Rural">Rural</option>
+            <option value="Coastal">Coastal</option>
+            <option value="Mountain">Mountain</option>
+        </select>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
